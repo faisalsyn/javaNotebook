@@ -35,7 +35,7 @@ public class HbaseTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		
+		/*
 		HTablePool pool;
 		
 		String tableName;
@@ -64,20 +64,27 @@ public class HbaseTest {
 		
 		System.out.println (Bytes.toString(r.getValue(Bytes.toBytes("cf"), Bytes.toBytes(""))));
 
-		Put put = new Put(Bytes.toBytes("row5"));
+		Put put = new Put(Bytes.toBytes("row1"));
 		
-		put.add(Bytes.toBytes("cf"), Bytes.toBytes(""), Bytes.toBytes("value101"));
+		put.add(Bytes.toBytes("cf"), Bytes.toBytes("a"), Bytes.toBytes("101"));
 		try {
 			htable.put(put);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		*/
 		
 
 		System.out.println ("Hey!");
 		
+		// Hbase Helper
+		HbaseHelper hbh = new HbaseHelper("userTable", 20);
+		
+		Integer value = Integer.parseInt(hbh.get("row1", "cf:a"));
+		value++;
+		hbh.put(value.toString(), "row1", "cf:a");
+		System.out.println ("AAA: "+hbh.get("row1", "cf:a"));
 
 	}
 
